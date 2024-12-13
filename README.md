@@ -5,6 +5,7 @@ Ce projet est une bot Slack permettant de diffuser des cours interactifs aux uti
 
 - Gère plusieurs cours, composés d’étapes (messages, questions).
   - Exemple de cours dans le fichier `sql/data.sql` 
+  - Génération de cours avec un [GPT personnalisé](https://chatgpt.com/g/g-675c50faeafc8191acdf8ef9d383e5c8-marcel-patulaci-generator)
 - Propose des questions avec des boutons interactifs.
 - Suit la progression de chaque utilisateur en base de données.
 - Gère un rythme d’envoi des messages avec un délai aléatoire pour un rendu plus humain.
@@ -22,24 +23,24 @@ Proposition du cours suivant : À la fin d’un cours, l’application propose d
 - Un outil comme ngrok si vous développez localement, afin d’exposer votre application sur une URL publique HTTPS (nécessaire pour les événements Slack).
 
 ## Installation
-1. Cloner le projet
+### 1. Cloner le projet
 
 ```bash
 git clone git@github.com:HelloAsso/marcel-patulacci-bot.git
 cd marcel-patulacci-bot
 ```
 
-2. Installer les dépendances
+### 2. Installer les dépendances
 
 ```bash
 npm install
-````
+```
 
-3. Configuration de la base de données
+### 3. Configuration de la base de données
 
 Créez les tables et colonnes telles que décrites dans le code SQL fourni (tables workspaces, users, courses, course_steps, progression).
 
-4. Variables d’environnement
+### 4. Variables d’environnement
 
 Créez un fichier .env à la racine du projet avec les variables suivantes :
 ```env
@@ -58,24 +59,24 @@ PORT=3000
 
 
 ## Configuration de l’application Slack
-1. Création de l’application Slack
+### 1. Création de l’application Slack
 
 - Rendez-vous sur https://api.slack.com/apps.
 - Cliquez sur **"Create New App"**.
 - Donnez un nom à votre application et choisissez le workspace dans lequel vous la créez.
 
-2. OAuth & Permissions
+### 2. OAuth & Permissions
 
 - Dans la section **"OAuth & Permissions"**, ajoutez les scopes nécessaires :
   - Bot Token Scopes : `chat:write`, `commands`, `im:history`, `users:read`
 - Cliquez sur "Install to Workspace" puis "Allow".
 - Copiez le **Bot User OAuth Token** (format `xoxb-...`) et placez-le dans votre `.env` sous `SLACK_BOT_TOKEN`.
 
-3. Signing Secret
+### 3. Signing Secret
 
 - Dans la section "Basic Information", copiez la valeur du Signing Secret et placez-la dans le `.env` sous `SLACK_SIGNING_SECRET`.
 
-4. Event Subscriptions
+### 4. Event Subscriptions
 
 - Activez "Event Subscriptions" dans la section correspondante.
 - Renseignez une URL publique (par exemple obtenue via `ngrok http 3000)`.
@@ -84,7 +85,7 @@ PORT=3000
   - `message.im`
 - Cliquez sur "Save Changes".
 
-5. Slash Commands
+### 5. Slash Commands
 
 Créez deux slash commands (exemples) dans la section "Slash Commands" :
 

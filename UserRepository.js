@@ -22,7 +22,7 @@ class UserRepository {
   }
 
   static async getAllUsers() {
-    const sql = `SELECT id, slack_user_id, name FROM users where name = 'eddy'`;
+    const sql = `SELECT id, slack_user_id, name FROM users`;
     const [rows] = await pool.query(sql);
     return rows;
   }
